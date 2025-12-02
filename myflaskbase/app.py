@@ -1,8 +1,8 @@
 from flask import Flask
-from .models import User
-from .config import DevConfig
-from .extensions import login_manager
-from .extensions import db
+from myflaskbase.blueprints.user.models import User
+from myflaskbase.config import DevConfig
+from myflaskbase.extensions import login_manager
+from myflaskbase.extensions import db
 
 def create_app(config_object=DevConfig):
     app = Flask(__name__)

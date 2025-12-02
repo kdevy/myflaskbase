@@ -1,7 +1,7 @@
 from flask_login import login_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from myflaskbase.models import db
-from myflaskbase.models import User
+from myflaskbase.extensions import db
+from myflaskbase.blueprints.user.models import User
 
 class UserService:
     @staticmethod
@@ -19,7 +19,7 @@ class UserService:
 
         if not username or not password:
             raise ValueError("Username and password are required")
-        
+
         user = User.query.filter_by(username=username).first()
 
         if user:

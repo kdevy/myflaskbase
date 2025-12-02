@@ -1,4 +1,4 @@
-from myflaskbase.models import User
+from myflaskbase.blueprints.user.models import User
 
 def create_user(db, username="test", password="password"):
     user = User(username=username)
