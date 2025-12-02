@@ -1,0 +1,32 @@
+[project]
+name = "myflaskbase"
+version = "0.1.0"
+description = "Reusable Flask base package with config, blueprints, and extensions."
+authors = [{name="kdevy"}]
+dependencies = [
+    "Flask",
+    "Flask-Babel",
+    "Flask-SQLAlchemy",
+    "Flask-Login",
+    "Flask-WTF",
+    "python-dotenv",
+    "PyMySQL",
+    "SQLAlchemy",
+    "Jinja2",
+    "Werkzeug",
+    "cryptography",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra -q"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
