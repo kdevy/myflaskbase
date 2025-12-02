@@ -1,10 +1,11 @@
 import pytest
 import os
+from flask import Flask
 
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
 
-from myflaskbase.app import create_app
+from myflaskbase.app import init_app
 from myflaskbase.config import BaseConfig
 from myflaskbase.extensions import db as _db
 
@@ -15,7 +16,9 @@ class TestConfig(BaseConfig):
 
 @pytest.fixture
 def app():
-    app = create_app(TestConfig)
+    app = Flask(__name__)
+    app.config.from_object(TestConfig)
+    init_app(app)
 
     with app.app_context():
         _db.create_all()
