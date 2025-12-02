@@ -15,6 +15,7 @@ dependencies = [
     "Jinja2",
     "Werkzeug",
     "cryptography",
+    "babel",
 ]
 
 [project.optional-dependencies]
