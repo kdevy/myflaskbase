@@ -1,11 +1,16 @@
+from flask import request
 from myflaskbase.blueprints.user.models import User
-from myflaskbase.extensions import login_manager
-from myflaskbase.extensions import db
+from myflaskbase.extensions import login_manager, db, babel
 
-def init_app(app):
+def init_app(app, locale_selector=None):
     # Init extensions
     db.init_app(app)
     login_manager.init_app(app)
+    if not locale_selector:
+        def locale_selector():
+            return request.accept_languages.best_match(app.config.get("LANGUAGES", ["ja", "en"]))
+
+    babel.init_app(app, locale_selector=locale_selector)
 
     @login_manager.user_loader
     def load_user(user_id):

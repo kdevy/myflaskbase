@@ -9,6 +9,7 @@ class BaseConfig:
             dbName = os.getenv('DB_NAME')
         ))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    LANGUAGES = [['ja', 'ja_JP', 'en']]
 
 
 class DevConfig(BaseConfig):
