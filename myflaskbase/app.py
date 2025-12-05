@@ -1,5 +1,4 @@
 from flask import request
-from myflaskbase.blueprints.user.models import User
 from myflaskbase.extensions import login_manager, db, babel
 
 def init_app(app, locale_selector=None):
@@ -12,14 +11,6 @@ def init_app(app, locale_selector=None):
 
     babel.init_app(app, locale_selector=locale_selector)
 
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
-
     with app.app_context():
         db.create_all()
 
-    login_manager.login_view = "user.login"
-
-    from .blueprints.user import user_bp
-    app.register_blueprint(user_bp)
