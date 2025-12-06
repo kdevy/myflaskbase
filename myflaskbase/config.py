@@ -10,6 +10,8 @@ class BaseConfig:
         ))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     LANGUAGES = ['ja', 'ja_JP', 'en']
+    BABEL_DEFAULT_LOCALE = 'ja'
+    BABEL_TRANSLATION_DIRECTORIES = "translations"
 
 
 class DevConfig(BaseConfig):
